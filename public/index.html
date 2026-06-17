@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0A0806" />
+    <meta name="description" content="Desi Delight - Premium Indian Restaurant | Order Online" />
+    <title>Desi Delight | Premium Indian Cuisine</title>
+
+    <!-- Google Fonts — loaded here to prevent FOUC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { background: #0A0806; color: #F6F0E5; font-family: 'Inter', sans-serif; }
+      #root { min-height: 100vh; }
+      /* Loading screen */
+      #preloader {
+        position: fixed; inset: 0; background: #0A0806;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        z-index: 9999; transition: opacity 0.6s ease;
+      }
+      #preloader.hidden { opacity: 0; pointer-events: none; }
+      .preloader-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem; color: #C59B4E; letter-spacing: 4px;
+        margin-bottom: 8px;
+      }
+      .preloader-sub {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1rem; color: #8E806A; letter-spacing: 8px; text-transform: uppercase;
+        margin-bottom: 40px;
+      }
+      .preloader-bar-wrap {
+        width: 200px; height: 2px; background: #241F1A; border-radius: 2px; overflow: hidden;
+      }
+      .preloader-bar {
+        height: 100%; background: linear-gradient(90deg, #C59B4E, #DFB564);
+        animation: loadbar 2.5s ease forwards;
+      }
+      @keyframes loadbar { from { width: 0%; } to { width: 100%; } }
+    </style>
+  </head>
+  <body>
+    <!-- Preloader — hides after all images load -->
+    <div id="preloader">
+      <div class="preloader-logo">🍽 Desi Delight</div>
+      <div class="preloader-sub">Crafting Flavours Since 2018</div>
+      <div class="preloader-bar-wrap"><div class="preloader-bar"></div></div>
+    </div>
+
+    <div id="root"></div>
+
+    <script>
+      // Hide preloader only after window fully loads (all images)
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          var el = document.getElementById('preloader');
+          if (el) {
+            el.classList.add('hidden');
+            setTimeout(function () { el.remove(); }, 700);
+          }
+        }, 2600);
+      });
+    </script>
+  </body>
+</html>
